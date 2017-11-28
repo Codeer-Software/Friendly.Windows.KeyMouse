@@ -15,6 +15,10 @@ RM.Friendly.WPFStandardControls
     PM> Install-Package Codeer.Friendly.Windows.KeyMouse
 
 ## Samples.
+These are extension methods.
+```csharp
+using Codeer.Friendly.Windows.KeyMouse;
+```
 Keybord emulate.
 ```csharp
 var window = WindowControl.FromZTop(app);
