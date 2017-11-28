@@ -6,71 +6,36 @@ namespace Codeer.Friendly.Windows.KeyMouse
     public static class UIObjectExtensions
     {
         public static void SendKeys(this IUIObject obj, string keys)
-        {
-            obj.Activate();
-            obj.App.Keybord().Send(keys);
-        }
+            => UIObjectKeybordEmulator.SendKeys(obj, keys);
 
         public static void MouseMove(this IUIObject obj, Point clientLocation)
-            => obj.App.Mouse().Move(GetTargetPos(obj, clientLocation));
+            => UIObjectMouseEmulator.MouseMove(obj, clientLocation);
 
         public static void MouseMove(this IUIObject obj, int clientX, int clientY)
-            => MouseMove(obj, new Point(clientX, clientY));
+            => UIObjectMouseEmulator.MouseMove(obj, clientX, clientY);
 
         public static void MouseDown(this IUIObject obj, MouseButtonType type = MouseButtonType.Left, Point? clientLocation = null)
-        {
-            var mouse = obj.App.Mouse();
-            mouse.Move(GetTargetPos(obj, clientLocation));
-            mouse.Down(type);
-        }
+            => UIObjectMouseEmulator.MouseDown(obj, type, clientLocation);
 
         public static void MouseDown(this IUIObject obj, MouseButtonType type, int clientX, int clientY)
-            => MouseDown(obj, type, new Point(clientX, clientY));
+            => UIObjectMouseEmulator.MouseDown(obj, type, clientX, clientY);
 
         public static void MouseUp(this IUIObject obj, MouseButtonType type = MouseButtonType.Left, Point? clientLocation = null)
-        {
-            var mouse = obj.App.Mouse();
-            mouse.Move(GetTargetPos(obj, clientLocation));
-            mouse.Up(type);
-        }
+            => UIObjectMouseEmulator.MouseUp(obj, type, clientLocation);
 
         public static void MouseUp(this IUIObject obj, MouseButtonType type, int clientX, int clientY)
-            => MouseUp(obj, type, new Point(clientX, clientY));
+            => UIObjectMouseEmulator.MouseUp(obj, type, clientX, clientY);
 
         public static void Click(this IUIObject obj, MouseButtonType type = MouseButtonType.Left, Point? clientLocation = null)
-        {
-            var mouse = obj.App.Mouse();
-            mouse.Move(GetTargetPos(obj, clientLocation));
-            mouse.Click(type);
-        }
+            => UIObjectMouseEmulator.Click(obj, type, clientLocation);
 
         public static void Click(this IUIObject obj, MouseButtonType type, int clientX, int clientY)
-            => Click(obj, type, new Point(clientX, clientY));
+            => UIObjectMouseEmulator.Click(obj, type, clientX, clientY);
 
         public static void DoubleClick(this IUIObject obj, MouseButtonType type = MouseButtonType.Left, Point? clientLocation = null)
-        {
-            var mouse = obj.App.Mouse();
-            mouse.Move(GetTargetPos(obj, clientLocation));
-            mouse.DoubleClick(type);
-        }
+            => UIObjectMouseEmulator.DoubleClick(obj, type, clientLocation);
 
         public static void DoubleClick(this IUIObject obj, MouseButtonType type, int clientX, int clientY)
-            => DoubleClick(obj, type, new Point(clientX, clientY));
-
-        static Point GetTargetPos(IUIObject obj, Point? clientLocation)
-        {
-            Point pos;
-            if (clientLocation == null)
-            {
-                var size = obj.Size;
-                pos = new Point(size.Width / 2, size.Height / 2);
-            }
-            else
-            {
-                pos = clientLocation.Value;
-            }
-            pos = obj.PointToScreen(pos);
-            return pos;
-        }
+            => UIObjectMouseEmulator.DoubleClick(obj, type, clientX, clientY);
     }
 }

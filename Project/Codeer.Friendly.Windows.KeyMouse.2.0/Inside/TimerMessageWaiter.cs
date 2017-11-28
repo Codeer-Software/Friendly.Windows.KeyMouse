@@ -2,10 +2,10 @@
 
 namespace Codeer.Friendly.Windows.KeyMouse.Inside
 {
-    public class TimerMessageWaiter
+    class TimerMessageWaiter
     {
-        public bool Arrived { get; set; }
-        public TimerMessageWaiter()
+        internal bool Arrived { get; set; }
+        internal TimerMessageWaiter()
         {
             var timer = new Timer { Interval = 1 };
             timer.Tick += (_, __) =>

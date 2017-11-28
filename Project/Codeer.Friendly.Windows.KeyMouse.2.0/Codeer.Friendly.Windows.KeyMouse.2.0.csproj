@@ -28,6 +28,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\Codeer.Friendly.Windows.KeyMouse.2.0.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Codeer.Friendly, Version=2.5.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL">
@@ -53,6 +54,8 @@
     <Compile Include="MouseButtonType.cs" />
     <Compile Include="MouseEmulator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UIObjectKeybordEmulator.cs" />
+    <Compile Include="UIObjectMouseEmulator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

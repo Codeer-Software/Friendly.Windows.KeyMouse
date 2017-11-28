@@ -31,17 +31,20 @@ namespace Test
             var form = app.Type<Form>()();
             form.Show();
 
-            target.SendKeys("abc");
-            Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "abc");
+            target.SendKeys("aBc");
+            Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "aBc");
         }
 
         [TestMethod]
         public void TestKeyUpDown()
         {
             var window = WindowControl.FromZTop(app);
+            window.Dynamic()._isModeifyTest = true;
             var target = new WindowControl(window.Dynamic()._keyTest);
 
             target.SetFocus();
+
+            //SHIFT + A
             var keybord = app.Keybord();
             keybord.Down(Keys.ShiftKey);
             keybord.Down(Keys.A);
@@ -49,12 +52,14 @@ namespace Test
             keybord.Up(Keys.ShiftKey);
             Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "A");
 
+            //ALT + Q
             keybord.Down(Keys.Menu);
             keybord.Down(Keys.Q);
             keybord.Up(Keys.Q);
             keybord.Up(Keys.Menu);
             Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "ALT + Q");
 
+            //CONTROL + Q
             keybord.Down(Keys.ControlKey);
             keybord.Down(Keys.Q);
             keybord.Up(Keys.Q);

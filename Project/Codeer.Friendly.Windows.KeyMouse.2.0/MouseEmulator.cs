@@ -78,8 +78,6 @@ namespace Codeer.Friendly.Windows.KeyMouse
         {
             var inputs = new SendInputEx();
             Cursor.Position = new Point(pos.X, pos.Y);
-            //    inputs.AddMouseInput(MouseStroke.MOVE, 0, true, pos.X, pos.Y);
-            //    inputs.Execute();
             WaitTimerMessage(_app);
         }
 

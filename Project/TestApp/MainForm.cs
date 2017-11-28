@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace TestApp
 {
     public partial class MainForm : Form
     {
+        bool _isModeifyTest;
+
         public MainForm()
         {
             InitializeComponent();
@@ -18,6 +19,8 @@ namespace TestApp
 
         private void _keyTest_KeyDown(object sender, KeyEventArgs e)
         {
+            if (!_isModeifyTest) return;
+
             if (e.KeyCode == Keys.Q)
             {
                 switch (ModifierKeys)

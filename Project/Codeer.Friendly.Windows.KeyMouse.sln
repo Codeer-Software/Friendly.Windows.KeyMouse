@@ -11,6 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{267684E2-DA4F-4C97-BDCA-3D3B276D2479}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B9920F18-11F5-401F-B201-E41D15ABF389}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\Codeer.Friendly.Windows.KeyMouse.nuspec = .nuget\Codeer.Friendly.Windows.KeyMouse.nuspec
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
