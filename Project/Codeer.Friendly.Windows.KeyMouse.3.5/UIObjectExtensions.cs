@@ -1,12 +1,25 @@
 ﻿using Codeer.Friendly.Windows.Grasp;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Codeer.Friendly.Windows.KeyMouse
 {
     public static class UIObjectExtensions
     {
         public static void SendKeys(this IUIObject obj, string keys)
-            => UIObjectKeybordEmulator.SendKeys(obj, keys);
+            => UIObjectKeybordEmulator.Send(obj, keys);
+
+        public static void SendControlAndKey(this IUIObject obj, Keys key) 
+            => UIObjectKeybordEmulator.SendControlAnd(obj, key);
+
+        public static void SendShiftAndKey(this IUIObject obj, Keys key)
+            => UIObjectKeybordEmulator.SendShiftAnd(obj, key);
+
+        public static void SendAltAndKey(this IUIObject obj, Keys key) 
+            => UIObjectKeybordEmulator.SendAltAnd(obj, key);
+
+        public static void SendModifyAndKey(this IUIObject obj, bool isControl, bool isShift, bool isAlt, Keys key)
+            => UIObjectKeybordEmulator.SendModifyAnd(obj, isControl, isShift, isAlt, key);
 
         public static void MouseMove(this IUIObject obj, Point clientLocation)
             => UIObjectMouseEmulator.MouseMove(obj, clientLocation);

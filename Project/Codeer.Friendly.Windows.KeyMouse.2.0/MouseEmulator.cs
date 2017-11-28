@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using static Codeer.Friendly.Windows.KeyMouse.Inside.NativeMethods;
-using static Codeer.Friendly.Windows.KeyMouse.Inside.TimingAdjuster;
+using static Codeer.Friendly.Windows.KeyMouse.TimingUtility;
 
 namespace Codeer.Friendly.Windows.KeyMouse
 {
@@ -18,6 +18,7 @@ namespace Codeer.Friendly.Windows.KeyMouse
 
         public void Down(MouseButtonType button, bool swing = true)
         {
+            WaitForTimerMessage(_app);
             var pos = Cursor.Position;
             var inputs = new SendInputEx();
             inputs.AddMouseInput(ToDownStroke(button), 0, true, 0, 0);
@@ -29,7 +30,7 @@ namespace Codeer.Friendly.Windows.KeyMouse
                 inputs.AddMouseInput(MouseStroke.MOVE, 0, true, pos.X + 0, pos.Y + 0);
             }
             inputs.Execute();
-            WaitTimerMessage(_app);
+            WaitForTimerMessage(_app);
             if (swing)
             {
                 Cursor.Position = pos;
@@ -38,15 +39,17 @@ namespace Codeer.Friendly.Windows.KeyMouse
 
         public void Up(MouseButtonType button)
         {
+            WaitForTimerMessage(_app);
             var inputs = new SendInputEx();
             inputs.AddMouseInput(ToUpStroke(button), 0, true, 0, 0);
             inputs.Execute();
-            WaitTimerMessage(_app);
+            WaitForTimerMessage(_app);
             SetClickTime();
         }
 
         public void Click(MouseButtonType button)
         {
+            WaitForTimerMessage(_app);
             WaitForDoubleClickTime();
             
             var inputs = new SendInputEx();
@@ -54,12 +57,13 @@ namespace Codeer.Friendly.Windows.KeyMouse
             inputs.AddMouseInput(ToUpStroke(button), 0, true, 0, 0);
 
             inputs.Execute();
-            WaitTimerMessage(_app);
+            WaitForTimerMessage(_app);
             SetClickTime();
         }
 
         public void DoubleClick(MouseButtonType button)
         {
+            WaitForTimerMessage(_app);
             WaitForDoubleClickTime();
 
             var inputs = new SendInputEx();
@@ -70,15 +74,16 @@ namespace Codeer.Friendly.Windows.KeyMouse
             }
 
             inputs.Execute();
-            WaitTimerMessage(_app);
+            WaitForTimerMessage(_app);
             SetClickTime();
         }
 
         public void Move(Point pos)
         {
+            WaitForTimerMessage(_app);
             var inputs = new SendInputEx();
             Cursor.Position = new Point(pos.X, pos.Y);
-            WaitTimerMessage(_app);
+            WaitForTimerMessage(_app);
         }
 
         void SetClickTime()

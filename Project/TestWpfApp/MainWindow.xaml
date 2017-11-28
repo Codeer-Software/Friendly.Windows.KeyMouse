@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TestWpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="473.361">
     <Grid>
-        
+        <TextBox x:Name="_textBox" Margin="169,124,207,144" RenderTransformOrigin="1.257,1.468"></TextBox>
     </Grid>
 </Window>

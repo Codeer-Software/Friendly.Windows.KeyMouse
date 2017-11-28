@@ -66,5 +66,45 @@ namespace Test
             keybord.Up(Keys.ControlKey);
             Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "CONTROL + Q");
         }
+
+        [TestMethod]
+        public void TestModifySend1()
+        {
+            var window = WindowControl.FromZTop(app);
+            window.Dynamic()._isModeifyTest = true;
+            var target = new WindowControl(window.Dynamic()._keyTest);
+
+            //SHIFT + A
+            target.SendShiftAndKey(Keys.A);
+            Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "A");
+
+            //ALT + Q
+            target.SendAltAndKey(Keys.Q);
+            Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "ALT + Q");
+
+            //CONTROL + Q
+            target.SendControlAndKey(Keys.Q);
+            Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "CONTROL + Q");
+        }
+
+        [TestMethod]
+        public void TestModifySend2()
+        {
+            var window = WindowControl.FromZTop(app);
+            window.Dynamic()._isModeifyTest = true;
+            var target = new WindowControl(window.Dynamic()._keyTest);
+
+            //SHIFT + A
+            target.SendModifyAndKey(false, true, false, Keys.A);
+            Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "A");
+
+            //ALT + Q
+            target.SendModifyAndKey(false, false, true, Keys.Q);
+            Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "ALT + Q");
+
+            //CONTROL + Q
+            target.SendModifyAndKey(true, false, false, Keys.Q);
+            Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "CONTROL + Q");
+        }
     }
 }

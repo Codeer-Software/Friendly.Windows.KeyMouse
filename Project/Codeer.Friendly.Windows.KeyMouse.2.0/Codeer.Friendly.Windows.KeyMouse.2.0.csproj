@@ -55,7 +55,7 @@
     <Compile Include="Inside\SendInputEx.cs" />
     <Compile Include="Inside\TargetAppInitializer.cs" />
     <Compile Include="Inside\TimerMessageWaiter.cs" />
-    <Compile Include="Inside\TimingAdjuster.cs" />
+    <Compile Include="TimingUtility.cs" />
     <Compile Include="KeybordEmulator.cs" />
     <Compile Include="MouseButtonType.cs" />
     <Compile Include="MouseEmulator.cs" />
