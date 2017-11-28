@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B9920F
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestWpfApp", "TestWpfApp\TestWpfApp.csproj", "{2518A55E-BA3B-4B0A-8AB9-5E550724C38E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{267684E2-DA4F-4C97-BDCA-3D3B276D2479}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{267684E2-DA4F-4C97-BDCA-3D3B276D2479}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{267684E2-DA4F-4C97-BDCA-3D3B276D2479}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2518A55E-BA3B-4B0A-8AB9-5E550724C38E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2518A55E-BA3B-4B0A-8AB9-5E550724C38E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2518A55E-BA3B-4B0A-8AB9-5E550724C38E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2518A55E-BA3B-4B0A-8AB9-5E550724C38E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

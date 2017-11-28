@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Codeer.Friendly.Windows.KeyMouse.2.0.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Codeer.Friendly.Windows.KeyMouse.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Codeer.Friendly, Version=2.5.0.0, Culture=neutral, PublicKeyToken=6c44da6fca38aa86, processorArchitecture=MSIL">
       <HintPath>..\packages\Codeer.Friendly.2.5.0\lib\net20\Codeer.Friendly.dll</HintPath>
@@ -58,6 +64,7 @@
     <Compile Include="UIObjectMouseEmulator.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Codeer.Friendly.Windows.KeyMouse.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
