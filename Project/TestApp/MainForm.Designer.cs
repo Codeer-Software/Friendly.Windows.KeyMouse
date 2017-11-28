@@ -32,6 +32,7 @@
             this._textBox = new System.Windows.Forms.TextBox();
             this._clickCheck = new System.Windows.Forms.Label();
             this._moveCheck = new System.Windows.Forms.Label();
+            this._keyTest = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // _list
@@ -54,11 +55,11 @@
             this._textBox.Size = new System.Drawing.Size(100, 19);
             this._textBox.TabIndex = 1;
             // 
-            // _mouseCheck
+            // _clickCheck
             // 
             this._clickCheck.AutoSize = true;
             this._clickCheck.Location = new System.Drawing.Point(205, 240);
-            this._clickCheck.Name = "_mouseCheck";
+            this._clickCheck.Name = "_clickCheck";
             this._clickCheck.Size = new System.Drawing.Size(67, 12);
             this._clickCheck.TabIndex = 2;
             this._clickCheck.Text = "Click Check";
@@ -72,12 +73,20 @@
             this._moveCheck.TabIndex = 3;
             this._moveCheck.Text = "Move Check";
             // 
+            // _keyTest
+            // 
+            this._keyTest.Location = new System.Drawing.Point(207, 179);
+            this._keyTest.Name = "_keyTest";
+            this._keyTest.Size = new System.Drawing.Size(53, 19);
+            this._keyTest.TabIndex = 4;
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this._keyTest);
             this.Controls.Add(this._moveCheck);
             this.Controls.Add(this._clickCheck);
             this.Controls.Add(this._textBox);
@@ -95,6 +104,7 @@
         private System.Windows.Forms.TextBox _textBox;
         private System.Windows.Forms.Label _clickCheck;
         private System.Windows.Forms.Label _moveCheck;
+        private System.Windows.Forms.TextBox _keyTest;
     }
 }
 

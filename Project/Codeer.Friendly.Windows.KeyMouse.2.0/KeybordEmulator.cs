@@ -14,7 +14,7 @@ namespace Codeer.Friendly.Windows.KeyMouse
 
         public void Send(string keys)
         {
-            SendKeys.Send(keys);
+            SendKeys.SendWait(keys);
             WaitTimerMessage(_app);
         }
 

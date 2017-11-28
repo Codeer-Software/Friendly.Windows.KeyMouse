@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace TestApp
@@ -12,6 +13,24 @@ namespace TestApp
             _clickCheck.MouseClick += _clickCheck_MouseClick;
             _clickCheck.MouseDoubleClick += _clickCheck_MouseDoubleClick;
             _moveCheck.MouseMove += _moveCheck_MouseMove;
+            _keyTest.KeyDown += _keyTest_KeyDown;
+        }
+
+        private void _keyTest_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Q)
+            {
+                switch (ModifierKeys)
+                {
+                    case Keys.Alt:
+                        _keyTest.Text = "ALT + Q";
+                        return;
+                    case Keys.Control:
+                        _keyTest.Text = "CONTROL + Q";
+                        return;
+                }
+            }
+            _keyTest.Text = string.Empty;
         }
 
         private void _moveCheck_MouseMove(object sender, MouseEventArgs e)
