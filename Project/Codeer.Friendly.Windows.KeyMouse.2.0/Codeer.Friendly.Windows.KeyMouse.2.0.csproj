@@ -43,18 +43,20 @@
     <Reference Include="Codeer.Friendly.Windows, Version=2.7.0.0, Culture=neutral, PublicKeyToken=532f270f1da385b3, processorArchitecture=MSIL">
       <HintPath>..\packages\Codeer.Friendly.Windows.2.7.0\lib\net20\Codeer.Friendly.Windows.dll</HintPath>
     </Reference>
-    <Reference Include="Codeer.Friendly.Windows.Grasp, Version=2.6.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
-      <HintPath>..\packages\Codeer.Friendly.Windows.Grasp.2.6.0\lib\net20\Codeer.Friendly.Windows.Grasp.dll</HintPath>
+    <Reference Include="Codeer.Friendly.Windows.Grasp.2.0, Version=2.7.0.0, Culture=neutral, PublicKeyToken=92809a28945fb91d, processorArchitecture=MSIL">
+      <HintPath>..\packages\Codeer.Friendly.Windows.Grasp.2.7.0\lib\net20\Codeer.Friendly.Windows.Grasp.2.0.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoordinateUtility.cs" />
     <Compile Include="Inside\NativeMethods.cs" />
     <Compile Include="Inside\SendInputEx.cs" />
     <Compile Include="Inside\TargetAppInitializer.cs" />
     <Compile Include="Inside\TimerMessageWaiter.cs" />
+    <Compile Include="PopupUtility.cs" />
     <Compile Include="TimingUtility.cs" />
     <Compile Include="KeybordEmulator.cs" />
     <Compile Include="MouseButtonType.cs" />

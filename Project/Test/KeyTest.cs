@@ -45,25 +45,24 @@ namespace Test
             target.SetFocus();
 
             //SHIFT + A
-            var keybord = app.Keybord();
-            keybord.Down(Keys.ShiftKey);
-            keybord.Down(Keys.A);
-            keybord.Up(Keys.A);
-            keybord.Up(Keys.ShiftKey);
+            app.KeyDown(Keys.ShiftKey);
+            app.KeyDown(Keys.A);
+            app.KeyUp(Keys.A);
+            app.KeyUp(Keys.ShiftKey);
             Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "A");
 
             //ALT + Q
-            keybord.Down(Keys.Menu);
-            keybord.Down(Keys.Q);
-            keybord.Up(Keys.Q);
-            keybord.Up(Keys.Menu);
+            app.KeyDown(Keys.Menu);
+            app.KeyDown(Keys.Q);
+            app.KeyUp(Keys.Q);
+            app.KeyUp(Keys.Menu);
             Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "ALT + Q");
 
             //CONTROL + Q
-            keybord.Down(Keys.ControlKey);
-            keybord.Down(Keys.Q);
-            keybord.Up(Keys.Q);
-            keybord.Up(Keys.ControlKey);
+            app.KeyDown(Keys.ControlKey);
+            app.KeyDown(Keys.Q);
+            app.KeyUp(Keys.Q);
+            app.KeyUp(Keys.ControlKey);
             Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "CONTROL + Q");
         }
 
@@ -105,6 +104,19 @@ namespace Test
             //CONTROL + Q
             target.SendModifyAndKey(true, false, false, Keys.Q);
             Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "CONTROL + Q");
+        }
+
+        [TestMethod]
+        public void TestPoupu()
+        {
+            var window = WindowControl.FromZTop(app);
+            var target = new WindowControl(window.Dynamic()._popupCheck);
+
+            target.Click(MouseButtonType.Right);
+            app.SendKeys("5");
+            app.SendKeys("a");
+
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "Menu10");
         }
     }
 }

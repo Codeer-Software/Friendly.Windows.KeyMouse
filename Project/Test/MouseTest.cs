@@ -5,6 +5,7 @@ using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.KeyMouse;
 using Codeer.Friendly.Dynamic;
 using System.Drawing;
+using System.Threading;
 
 namespace Test
 {
@@ -88,6 +89,45 @@ namespace Test
             var target = new WindowControl(window.Dynamic()._moveCheck);
             target.MouseMove(new Point(3, 4));
             Assert.AreEqual((string)window.Dynamic()._textBox.Text, "Check Move : 3, 4");
+        }
+
+        [TestMethod]
+        public void TestSplitToRows()
+        {
+            var window = WindowControl.FromZTop(app);
+            var target = new WindowControl(window.Dynamic()._panel);
+            var grid = target.SplitToRows(3);
+            grid[2].Click();
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "{X=80,Y=100}");
+        }
+
+        [TestMethod]
+        public void TestSplitToColumns()
+        {
+            var window = WindowControl.FromZTop(app);
+            var target = new WindowControl(window.Dynamic()._panel);
+            var grid = target.SplitToColumns(4);
+            grid[3].Click();
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "{X=140,Y=60}");
+        }
+
+        [TestMethod]
+        public void TestSplitToGrid()
+        {
+            var window = WindowControl.FromZTop(app);
+            var target = new WindowControl(window.Dynamic()._panel);
+            var grid = target.SplitToGrid(3, 4);
+            grid[2][3].Click();
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "{X=140,Y=100}");
+        }
+
+        [TestMethod]
+        public void TestPopup()
+        {
+            var window = WindowControl.FromZTop(app);
+            var target = new WindowControl(window.Dynamic()._popupCheck);
+            PopupUtility.ExecuteContextMenu(target, new PopupTarget(5, 4), new PopupTarget(5, 4));
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "Menu10");
         }
     }
 }

@@ -15,6 +15,13 @@ namespace TestApp
             _clickCheck.MouseDoubleClick += _clickCheck_MouseDoubleClick;
             _moveCheck.MouseMove += _moveCheck_MouseMove;
             _keyTest.KeyDown += _keyTest_KeyDown;
+            _panel.Click += _panel_Click;
+        }
+
+        private void _panel_Click(object sender, EventArgs e)
+        {
+            var pos = _panel.PointToClient(Cursor.Position);
+            _textBox.Text = pos.ToString();
         }
 
         private void _keyTest_KeyDown(object sender, KeyEventArgs e)
@@ -91,10 +98,10 @@ namespace TestApp
             _textBox.Text = "Drop : " + pos.X + ", " + pos.Y;
             base.OnDragDrop(drgevent);
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        
+        private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
-
+            _textBox.Text = "Menu10";
         }
     }
 }

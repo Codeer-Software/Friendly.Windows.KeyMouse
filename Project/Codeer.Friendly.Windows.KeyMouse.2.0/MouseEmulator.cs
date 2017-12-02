@@ -78,11 +78,11 @@ namespace Codeer.Friendly.Windows.KeyMouse
             SetClickTime();
         }
 
-        public void Move(Point pos)
+        public void Move(Point screenLocation)
         {
             WaitForTimerMessage(_app);
             var inputs = new SendInputEx();
-            Cursor.Position = new Point(pos.X, pos.Y);
+            Cursor.Position = new Point(screenLocation.X, screenLocation.Y);
             WaitForTimerMessage(_app);
         }
 

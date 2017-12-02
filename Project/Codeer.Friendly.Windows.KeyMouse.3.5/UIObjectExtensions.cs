@@ -27,13 +27,13 @@ namespace Codeer.Friendly.Windows.KeyMouse
         public static void MouseMove(this IUIObject obj, int clientX, int clientY)
             => UIObjectMouseEmulator.MouseMove(obj, clientX, clientY);
 
-        public static void MouseDown(this IUIObject obj, MouseButtonType type = MouseButtonType.Left, Point? clientLocation = null)
+        public static void MouseDown(this IUIObject obj, MouseButtonType type, Point? clientLocation = null)
             => UIObjectMouseEmulator.MouseDown(obj, type, clientLocation);
 
         public static void MouseDown(this IUIObject obj, MouseButtonType type, int clientX, int clientY)
             => UIObjectMouseEmulator.MouseDown(obj, type, clientX, clientY);
 
-        public static void MouseUp(this IUIObject obj, MouseButtonType type = MouseButtonType.Left, Point? clientLocation = null)
+        public static void MouseUp(this IUIObject obj, MouseButtonType type, Point? clientLocation = null)
             => UIObjectMouseEmulator.MouseUp(obj, type, clientLocation);
 
         public static void MouseUp(this IUIObject obj, MouseButtonType type, int clientX, int clientY)
@@ -50,5 +50,14 @@ namespace Codeer.Friendly.Windows.KeyMouse
 
         public static void DoubleClick(this IUIObject obj, MouseButtonType type, int clientX, int clientY)
             => UIObjectMouseEmulator.DoubleClick(obj, type, clientX, clientY);
+
+        public static IUIObject[] SplitToColumns(this IUIObject obj, int colCount)
+            => CoordinateUtility.SplitToColumns(obj, colCount);
+
+        public static IUIObject[] SplitToRows(this IUIObject obj, int rowCount)
+            => CoordinateUtility.SplitToRows(obj, rowCount);
+
+        public static IUIObject[][] SplitToGrid(this IUIObject obj, int rowCount, int colCount)
+            => CoordinateUtility.SplitToGrid(obj, rowCount, colCount);
     }
 }
