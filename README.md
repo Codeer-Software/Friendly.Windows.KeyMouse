@@ -66,8 +66,7 @@ var window = WindowControl.FromZTop(app);
 var target = new WindowControl(window.Dynamic()._keyMouseTest);
 
 //ALT + MouseClick;
-var keybord = app.Keybord();
-keybord.Down(Keys.Menu);
+app.KeyDown(Keys.Menu);
 target.Click():
-keybord.Up(Keys.Menu);
+app.KeyUp(Keys.Menu);
 ```
