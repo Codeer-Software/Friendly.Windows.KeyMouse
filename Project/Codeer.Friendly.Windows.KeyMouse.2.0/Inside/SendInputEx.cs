@@ -55,7 +55,7 @@ namespace Codeer.Friendly.Windows.KeyMouse.Inside
         internal void Execute()
         {
             Input[] inputArray = _inputs.ToArray();
-            SendInput(inputArray.Length, inputArray, Marshal.SizeOf(inputArray[0]));
+            SendInput(inputArray.Length, inputArray, Marshal.SizeOf(typeof(Input)));
             GC.KeepAlive(inputArray);
             _inputs.Clear();
         }

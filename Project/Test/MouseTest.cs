@@ -5,7 +5,7 @@ using Codeer.Friendly.Windows.Grasp;
 using Codeer.Friendly.Windows.KeyMouse;
 using Codeer.Friendly.Dynamic;
 using System.Drawing;
-using System.Threading;
+using System.Windows.Forms;
 
 namespace Test
 {
@@ -92,42 +92,54 @@ namespace Test
         }
 
         [TestMethod]
-        public void TestSplitToRows()
+        public void TestWheel1()
         {
             var window = WindowControl.FromZTop(app);
             var target = new WindowControl(window.Dynamic()._panel);
-            var grid = target.SplitToRows(3);
-            grid[2].Click();
-            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "{X=80,Y=100}");
+            target.Click();
+
+            var emu = new MouseEmulator(app);
+
+            emu.Wheel(250);
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "250");
+
+            emu.Wheel(false, 1);
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "120");
+
+            emu.Wheel(true, 2);
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "-240");
         }
 
         [TestMethod]
-        public void TestSplitToColumns()
+        public void TestWheel2()
         {
             var window = WindowControl.FromZTop(app);
             var target = new WindowControl(window.Dynamic()._panel);
-            var grid = target.SplitToColumns(4);
-            grid[3].Click();
-            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "{X=140,Y=60}");
+            
+            UIObjectMouseEmulator.MouseWheel(target, 250);
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "250");
+
+            UIObjectMouseEmulator.MouseWheel(target, false, 1);
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "120");
+
+            UIObjectMouseEmulator.MouseWheel(target, true, 2);
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "-240");
         }
 
         [TestMethod]
-        public void TestSplitToGrid()
+        public void TestWheel3()
         {
             var window = WindowControl.FromZTop(app);
             var target = new WindowControl(window.Dynamic()._panel);
-            var grid = target.SplitToGrid(3, 4);
-            grid[2][3].Click();
-            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "{X=140,Y=100}");
-        }
 
-        [TestMethod]
-        public void TestPopup()
-        {
-            var window = WindowControl.FromZTop(app);
-            var target = new WindowControl(window.Dynamic()._popupCheck);
-            PopupUtility.ExecuteContextMenu(target, new PopupTarget(5, 4), new PopupTarget(5, 4));
-            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "Menu10");
+            target.MouseWheel(250);
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "250");
+
+            target.MouseWheel(false, 1);
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "120");
+
+            target.MouseWheel(true, 2);
+            Assert.AreEqual((string)window.Dynamic()._textBox.Text, "-240");
         }
     }
 }

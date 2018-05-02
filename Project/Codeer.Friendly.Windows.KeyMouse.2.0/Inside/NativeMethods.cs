@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
 
 namespace Codeer.Friendly.Windows.KeyMouse.Inside
@@ -77,10 +78,28 @@ namespace Codeer.Friendly.Windows.KeyMouse.Inside
             KEY_UP = 0x0002
         }
 
+        [StructLayout(LayoutKind.Sequential)]
+        public struct NativeMessage
+        {
+            public IntPtr handle;
+            public uint msg;
+            public IntPtr wParam;
+            public IntPtr lParam;
+            public uint time;
+            public Point p;
+        }
+
+        internal const int WM_MOUSEMOVE = 0x0200;
+        internal const int PM_NOREMOVE = 0x0000;
+
         [DllImport("user32.dll", EntryPoint = "MapVirtualKeyA")]
         internal extern static int MapVirtualKey(int wCode, int wMapType);
 
         [DllImport("user32.dll")]
         internal extern static void SendInput(int nInputs, Input[] pInputs, int cbsize);
+
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool PeekMessage(out NativeMessage lpMsg, IntPtr hWnd, uint wMsgFilterMin, uint wMsgFilterMax, uint wRemoveMsg);
     }
 }

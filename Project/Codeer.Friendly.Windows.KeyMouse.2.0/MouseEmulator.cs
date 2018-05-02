@@ -9,13 +9,25 @@ using static Codeer.Friendly.Windows.KeyMouse.TimingUtility;
 
 namespace Codeer.Friendly.Windows.KeyMouse
 {
+    /// <summary>
+    /// Mouse emulator.
+    /// </summary>
     public class MouseEmulator
     {
         WindowsAppFriend _app;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="app">WindowsAppFriend.</param>
         public MouseEmulator(WindowsAppFriend app)
             => _app = TargetAppInitializer.Init(app);
 
+        /// <summary>
+        /// Mouse down.
+        /// </summary>
+        /// <param name="button">Mouse button type.</param>
+        /// <param name="swing">Flag to decide whether to move the mouse slightly after pressing the mouse button. If it is set to true, the manipulation feeling increases and in many cases it affects the better.</param>
         public void Down(MouseButtonType button, bool swing = true)
         {
             WaitForTimerMessage(_app);
@@ -37,6 +49,10 @@ namespace Codeer.Friendly.Windows.KeyMouse
             }
         }
 
+        /// <summary>
+        /// Mouse up.
+        /// </summary>
+        /// <param name="button">Mouse button type.</param>
         public void Up(MouseButtonType button)
         {
             WaitForTimerMessage(_app);
@@ -47,6 +63,10 @@ namespace Codeer.Friendly.Windows.KeyMouse
             SetClickTime();
         }
 
+        /// <summary>
+        /// Click.
+        /// </summary>
+        /// <param name="button">Mouse button type.</param>
         public void Click(MouseButtonType button)
         {
             WaitForTimerMessage(_app);
@@ -61,6 +81,10 @@ namespace Codeer.Friendly.Windows.KeyMouse
             SetClickTime();
         }
 
+        /// <summary>
+        /// Double click.
+        /// </summary>
+        /// <param name="button">Mouse button type.</param>
         public void DoubleClick(MouseButtonType button)
         {
             WaitForTimerMessage(_app);
@@ -78,11 +102,51 @@ namespace Codeer.Friendly.Windows.KeyMouse
             SetClickTime();
         }
 
+        /// <summary>
+        /// Mouse move.
+        /// </summary>
+        /// <param name="screenLocation">Screen coordinates.</param>
         public void Move(Point screenLocation)
         {
             WaitForTimerMessage(_app);
+            while ((Point)_app[typeof(Cursor), "Position"]().Core != screenLocation)
+            {
+                _app[GetType(), "SetCursorPos"](screenLocation);
+                WaitForTimerMessage(_app);
+            }
+        }
+
+        static void SetCursorPos(Point pos)
+        {
+            if (Cursor.Position == pos) return;
+
+            Cursor.Position = pos;
+            while (!PeekMessage(out var msg, IntPtr.Zero, WM_MOUSEMOVE, WM_MOUSEMOVE, PM_NOREMOVE))
+            {
+                Cursor.Position = pos;
+                Thread.Sleep(1);
+            }
+        }
+
+        /// <summary>
+        /// Mouse wheel.
+        /// </summary>
+        /// <param name="near">Whether the direction of wheel of the mouse is toward the near.</param>
+        /// <param name="count">Count of wheel.</param>
+        public void Wheel(bool near, int count) => Wheel(near ? -120 * count : 120 * count);
+
+        /// <summary>
+        /// Mouse wheel.
+        /// </summary>
+        /// <param name="delta">delta value.</param>
+        public void Wheel(int delta)
+        {
+            WaitForTimerMessage(_app);
+
             var inputs = new SendInputEx();
-            Cursor.Position = new Point(screenLocation.X, screenLocation.Y);
+            inputs.AddMouseInput(MouseStroke.WHEEL, delta, false, 0, 0);
+
+            inputs.Execute();
             WaitForTimerMessage(_app);
         }
 

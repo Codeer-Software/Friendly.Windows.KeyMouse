@@ -16,6 +16,12 @@ namespace TestApp
             _moveCheck.MouseMove += _moveCheck_MouseMove;
             _keyTest.KeyDown += _keyTest_KeyDown;
             _panel.Click += _panel_Click;
+            _panel.MouseWheel += _panel_MouseWheel;
+        }
+
+        private void _panel_MouseWheel(object sender, MouseEventArgs e)
+        {
+            _textBox.Text = e.Delta.ToString();
         }
 
         private void _panel_Click(object sender, EventArgs e)
