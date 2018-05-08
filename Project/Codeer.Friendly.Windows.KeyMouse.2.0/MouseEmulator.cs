@@ -121,7 +121,7 @@ namespace Codeer.Friendly.Windows.KeyMouse
             if (Cursor.Position == pos) return;
 
             Cursor.Position = pos;
-            while (!PeekMessage(out var msg, IntPtr.Zero, WM_MOUSEMOVE, WM_MOUSEMOVE, PM_NOREMOVE))
+            while (!PeekMessage(out var msg, IntPtr.Zero, 0, 0, PM_NOREMOVE))
             {
                 Cursor.Position = pos;
                 Thread.Sleep(1);

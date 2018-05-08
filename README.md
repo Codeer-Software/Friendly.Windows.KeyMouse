@@ -1,6 +1,12 @@
 # Friendly.Windows.KeyMouse
 ======================
 
+This library is a layer on top of
+Friendly, so you must learn that first.
+But it is very easy to learn.
+
+https://github.com/Codeer-Software/Friendly.Windows
+
 ## Features ...
 Key mouse emulation can be performed on Windows applications at high speed and with high accuracy.
 This library is built on Friendly Layer.
