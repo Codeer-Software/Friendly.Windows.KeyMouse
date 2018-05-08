@@ -1,5 +1,4 @@
 # Friendly.Windows.KeyMouse
-======================
 
 This library is a layer on top of
 Friendly, so you must learn that first.
