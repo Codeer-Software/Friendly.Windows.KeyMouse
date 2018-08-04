@@ -44,6 +44,14 @@ namespace Test
 
             target.SetFocus();
 
+            //A
+            app.SendKey(Keys.A);
+            Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "a");
+
+            //Enter
+            app.SendKey(Keys.Enter);
+            Assert.AreEqual((string)window.Dynamic()._testEnterButton.Text, "ENTER");
+
             //SHIFT + A
             app.KeyDown(Keys.ShiftKey);
             app.KeyDown(Keys.A);
@@ -72,6 +80,14 @@ namespace Test
             var window = WindowControl.FromZTop(app);
             window.Dynamic()._isModeifyTest = true;
             var target = new WindowControl(window.Dynamic()._keyTest);
+
+            //A
+            target.SendKey(Keys.A);
+            Assert.AreEqual((string)window.Dynamic()._keyTest.Text, "a");
+
+            //Enter
+            target.SendKey(Keys.Enter);
+            Assert.AreEqual((string)window.Dynamic()._testEnterButton.Text, "ENTER");
 
             //SHIFT + A
             target.SendShiftAndKey(Keys.A);

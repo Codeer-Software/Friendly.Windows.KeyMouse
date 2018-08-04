@@ -47,6 +47,7 @@
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this._panel = new System.Windows.Forms.Panel();
+            this._testEnterButton = new System.Windows.Forms.Button();
             this._menu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -191,12 +192,24 @@
             this._panel.Size = new System.Drawing.Size(160, 120);
             this._panel.TabIndex = 6;
             // 
+            // _testEnterButton
+            // 
+            this._testEnterButton.Location = new System.Drawing.Point(13, 332);
+            this._testEnterButton.Name = "_testEnterButton";
+            this._testEnterButton.Size = new System.Drawing.Size(75, 23);
+            this._testEnterButton.TabIndex = 7;
+            this._testEnterButton.Text = "---";
+            this._testEnterButton.UseVisualStyleBackColor = true;
+            this._testEnterButton.Click += new System.EventHandler(this._testEnterButton_Click);
+            // 
             // MainForm
             // 
+            this.AcceptButton = this._testEnterButton;
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(368, 368);
+            this.Controls.Add(this._testEnterButton);
             this.Controls.Add(this._panel);
             this.Controls.Add(this._popupCheck);
             this.Controls.Add(this._keyTest);
@@ -232,6 +245,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem9;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem10;
         private System.Windows.Forms.Panel _panel;
+        private System.Windows.Forms.Button _testEnterButton;
     }
 }
 

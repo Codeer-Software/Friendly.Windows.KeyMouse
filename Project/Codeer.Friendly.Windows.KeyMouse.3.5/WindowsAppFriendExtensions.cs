@@ -24,6 +24,14 @@ namespace Codeer.Friendly.Windows.KeyMouse
             => new KeybordEmulator(app).Send(keys);
 
         /// <summary>
+        /// Send key.
+        /// </summary>
+        /// <param name="app">WindowsAppFriend.</param>
+        /// <param name="key">key.</param>
+        public static void SendKey(this WindowsAppFriend app, Keys key)
+            => new KeybordEmulator(app).Send(key);
+
+        /// <summary>
         /// Ctrl + Key.
         /// </summary>
         /// <param name="app">WindowsAppFriend.</param>

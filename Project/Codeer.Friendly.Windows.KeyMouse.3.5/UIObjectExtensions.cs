@@ -18,6 +18,14 @@ namespace Codeer.Friendly.Windows.KeyMouse
             => UIObjectKeybordEmulator.Send(obj, keys);
 
         /// <summary>
+        /// Send the key.
+        /// </summary>
+        /// <param name="obj">IUIObject.</param>
+        /// <param name="key">key.</param>
+        public static void SendKey(this IUIObject obj, Keys key)
+            => UIObjectKeybordEmulator.Send(obj, key);
+
+        /// <summary>
         /// Ctrl + Key.
         /// </summary>
         /// <param name="obj">IUIObject.</param>

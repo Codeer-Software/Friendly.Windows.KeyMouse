@@ -31,6 +31,16 @@ namespace Codeer.Friendly.Windows.KeyMouse
         }
 
         /// <summary>
+        /// Send key.
+        /// </summary>
+        /// <param name="key">Key.</param>
+        public void Send(Keys key)
+        {
+            Down(key);
+            Up(key);
+        }
+
+        /// <summary>
         /// Ctrl + Key.
         /// </summary>
         /// <param name="key">key.</param>

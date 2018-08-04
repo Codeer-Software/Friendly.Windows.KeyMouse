@@ -19,6 +19,16 @@ namespace Codeer.Friendly.Windows.KeyMouse
             new KeybordEmulator(obj.App).Send(keys);
         }
         /// <summary>
+        /// Send the key.
+        /// </summary>
+        /// <param name="obj">IUIObject.</param>
+        /// <param name="key">key.</param>
+        public static void Send(IUIObject obj, Keys key)
+        {
+            obj.Activate();
+            new KeybordEmulator(obj.App).Send(key);
+        }
+        /// <summary>
         /// Ctrl + Key.
         /// </summary>
         /// <param name="obj">IUIObject.</param>

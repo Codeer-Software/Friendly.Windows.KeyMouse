@@ -109,5 +109,10 @@ namespace TestApp
         {
             _textBox.Text = "Menu10";
         }
+
+        private void _testEnterButton_Click(object sender, EventArgs e)
+        {
+            _testEnterButton.Text = "ENTER";
+        }
     }
 }
