@@ -24,7 +24,7 @@ These are extension methods.
 ```csharp
 using Codeer.Friendly.Windows.KeyMouse;
 ```
-Keybord emulate.
+Keyboard emulate.
 ```csharp
 var window = WindowControl.FromZTop(app);
 var target = new FormsTextBox(window.Dynamic()._keyTest);
@@ -65,7 +65,7 @@ var dropTarget = new WindowControl(window.Dynamic()._dropTest);
 target.MouseDown(MouseButtonType.Left, new Point(0, 0));
 dropTarget.MouseUp(MouseButtonType.Left, new Point(2, 3));
 ```
-Keybord and Mouse emulate.
+Keyboard and Mouse emulate.
 ```csharp
 var window = WindowControl.FromZTop(app);
 var target = new WindowControl(window.Dynamic()._keyMouseTest);
@@ -75,3 +75,4 @@ app.KeyDown(Keys.Menu);
 target.Click():
 app.KeyUp(Keys.Menu);
 ```
+
