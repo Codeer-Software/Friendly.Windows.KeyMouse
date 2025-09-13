@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net8.0-windows</TargetFramework>
+	  <UseWindowsForms>true</UseWindowsForms>
+	  <Platforms>AnyCPU</Platforms>
+	  <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+	    <NoWarn>1701;1702;NU1701</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+	    <NoWarn>1701;1702;NU1701</NoWarn>
+    </PropertyGroup>
+	
+  <ItemGroup>
+    <PackageReference Include="Codeer.Friendly.Windows" Version="2.18.0" />
+    <PackageReference Include="Codeer.Friendly.Windows.Grasp" Version="2.16.0" />
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="MessagePack" Version="3.1.4" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageReference Include="NUnit" Version="3.14.0" />
+    <PackageReference Include="NUnit.Analyzers" Version="3.9.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="4.5.0" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <ProjectReference Include="..\Codeer.Friendly.Windows.KeyMouse.2.0\Codeer.Friendly.Windows.KeyMouse.2.0.csproj" />
+    <ProjectReference Include="..\Codeer.Friendly.Windows.KeyMouse.3.5\Codeer.Friendly.Windows.KeyMouse.3.5.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+</Project>
