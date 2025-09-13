@@ -14,7 +14,7 @@
     <tags>Codeer Friendly WinForms WPF Win32 Key Mouse Auto Test</tags>
     
     <dependencies>
-      <dependency id="Codeer.Friendly.Windows.Grasp" version="2.15.0" />
+      <dependency id="Codeer.Friendly.Windows.Grasp" version="2.16.0" />
     </dependencies>
     
   </metadata>
